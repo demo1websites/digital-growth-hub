@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Process", href: "#process" },
-  { name: "Portfolio", href: "#portfolio" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/#about" },
+  { name: "Services", href: "/services" },
+  { name: "Process", href: "/#process" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,12 +26,44 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  // Handle hash scrolling after navigation
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const element = document.querySelector(location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
     }
+  }, [location]);
+
+  const handleNavClick = (href: string) => {
     setIsOpen(false);
+    
+    if (href.startsWith("/#")) {
+      // Hash link on home page
+      if (location.pathname === "/") {
+        const element = document.querySelector(href.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        navigate(href);
+      }
+    } else if (href === "/") {
+      navigate("/");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate(href);
+    }
+  };
+
+  const isActivePage = (href: string) => {
+    if (href === "/services") return location.pathname === "/services";
+    if (href === "/portfolio") return location.pathname === "/portfolio";
+    if (href === "/") return location.pathname === "/" && !location.hash;
+    return false;
   };
 
   return (
@@ -42,12 +77,8 @@ export const Navbar = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <a
-            href="#home"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection("#home");
-            }}
+          <button
+            onClick={() => handleNavClick("/")}
             className="flex items-center gap-2"
           >
             <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center">
@@ -60,24 +91,20 @@ export const Navbar = () => {
             >
               Full-Stack Digital
             </span>
-          </a>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.name}
-                href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(link.href);
-                }}
+                onClick={() => handleNavClick(link.href)}
                 className={`text-sm font-medium transition-colors hover:text-accent ${
                   isScrolled ? "text-foreground" : "text-white/90"
-                }`}
+                } ${isActivePage(link.href) ? "text-accent" : ""}`}
               >
                 {link.name}
-              </a>
+              </button>
             ))}
           </div>
 
@@ -86,7 +113,7 @@ export const Navbar = () => {
             <Button
               variant="hero"
               size="lg"
-              onClick={() => scrollToSection("#contact")}
+              onClick={() => handleNavClick("/#contact")}
             >
               Book Consultation
             </Button>
@@ -108,23 +135,21 @@ export const Navbar = () => {
           <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg animate-fade-in">
             <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
               {navLinks.map((link) => (
-                <a
+                <button
                   key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(link.href);
-                  }}
-                  className="text-foreground text-base font-medium py-3 px-4 rounded-lg hover:bg-muted transition-colors"
+                  onClick={() => handleNavClick(link.href)}
+                  className={`text-foreground text-base font-medium py-3 px-4 rounded-lg hover:bg-muted transition-colors text-left ${
+                    isActivePage(link.href) ? "text-accent bg-muted" : ""
+                  }`}
                 >
                   {link.name}
-                </a>
+                </button>
               ))}
               <Button
                 variant="hero"
                 size="lg"
                 className="mt-2"
-                onClick={() => scrollToSection("#contact")}
+                onClick={() => handleNavClick("/#contact")}
               >
                 Book Consultation
               </Button>
