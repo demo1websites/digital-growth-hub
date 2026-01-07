@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Loader2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -33,18 +33,23 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 lg:py-32 gradient-subtle">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="contact" className="py-24 lg:py-32 gradient-subtle relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-0 left-0 w-full h-full gradient-mesh opacity-30" />
+      
+      <div className="container mx-auto px-4 lg:px-8 relative">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block text-accent font-semibold text-sm uppercase tracking-wider mb-4">
-            Get In Touch
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
+            <span className="text-accent font-semibold text-sm uppercase tracking-wider">
+              Get In Touch
+            </span>
+          </div>
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-[1.1]">
             Let's Build Something
-            <span className="gradient-text"> Amazing</span>
+            <span className="gradient-text block mt-2"> Amazing</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-lg lg:text-xl">
             Ready to start your project? Have questions? We'd love to hear from
             you. Fill out the form below or reach out directly.
           </p>
@@ -54,10 +59,10 @@ export const ContactSection = () => {
           {/* Contact Info */}
           <div className="lg:col-span-2 space-y-8">
             <div>
-              <h3 className="font-display font-bold text-xl text-foreground mb-4">
+              <h3 className="font-display font-bold text-2xl text-foreground mb-4">
                 Contact Information
               </h3>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-muted-foreground">
                 Reach out to us through any of these channels. We typically
                 respond within 24 hours.
               </p>
@@ -66,10 +71,10 @@ export const ContactSection = () => {
             <div className="space-y-4">
               <a
                 href="mailto:hello@fullstackdigital.com"
-                className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border hover:border-accent/50 transition-colors group"
+                className="flex items-center gap-4 p-5 rounded-2xl bg-card border border-border shadow-card hover-lift group"
               >
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                  <Mail className="w-5 h-5 text-accent" />
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[hsl(262_83%_58%)] to-[hsl(280_80%_60%)] flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Mail className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <div className="font-medium text-foreground">Email Us</div>
@@ -77,14 +82,15 @@ export const ContactSection = () => {
                     hello@fullstackdigital.com
                   </div>
                 </div>
+                <ArrowRight className="w-5 h-5 text-muted-foreground ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
 
               <a
                 href="tel:+1234567890"
-                className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border hover:border-accent/50 transition-colors group"
+                className="flex items-center gap-4 p-5 rounded-2xl bg-card border border-border shadow-card hover-lift group"
               >
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                  <Phone className="w-5 h-5 text-accent" />
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[hsl(330_85%_60%)] to-[hsl(350_80%_55%)] flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Phone className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <div className="font-medium text-foreground">Call Us</div>
@@ -92,11 +98,12 @@ export const ContactSection = () => {
                     +1 (234) 567-890
                   </div>
                 </div>
+                <ArrowRight className="w-5 h-5 text-muted-foreground ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
 
-              <div className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border">
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-accent" />
+              <div className="flex items-center gap-4 p-5 rounded-2xl bg-card border border-border shadow-card">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[hsl(174_72%_45%)] to-[hsl(190_70%_50%)] flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <div className="font-medium text-foreground">Location</div>
@@ -110,16 +117,23 @@ export const ContactSection = () => {
             {/* Social Links */}
             <div className="pt-6 border-t border-border">
               <p className="text-muted-foreground text-sm mb-4">Follow us</p>
-              <div className="flex gap-4">
-                {["LinkedIn", "Twitter", "GitHub"].map((social) => (
-                  <a
-                    key={social}
-                    href="#"
-                    className="px-4 py-2 rounded-lg bg-secondary text-secondary-foreground text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
-                  >
-                    {social}
-                  </a>
-                ))}
+              <div className="flex gap-3">
+                {["LinkedIn", "Twitter", "GitHub"].map((social, index) => {
+                  const colors = [
+                    "from-[hsl(262_83%_58%)] to-[hsl(280_80%_60%)]",
+                    "from-[hsl(330_85%_60%)] to-[hsl(350_80%_55%)]",
+                    "from-[hsl(174_72%_45%)] to-[hsl(190_70%_50%)]",
+                  ];
+                  return (
+                    <a
+                      key={social}
+                      href="#"
+                      className={`px-5 py-2.5 rounded-xl bg-gradient-to-br ${colors[index]} text-white text-sm font-medium hover:scale-105 transition-transform shadow-lg`}
+                    >
+                      {social}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -128,9 +142,9 @@ export const ContactSection = () => {
           <div className="lg:col-span-3">
             <form
               onSubmit={handleSubmit}
-              className="p-6 lg:p-8 rounded-2xl bg-card border border-border shadow-card"
+              className="p-8 lg:p-10 rounded-3xl bg-card border border-border shadow-card"
             >
-              <div className="grid sm:grid-cols-2 gap-4 mb-4">
+              <div className="grid sm:grid-cols-2 gap-5 mb-5">
                 <div>
                   <label
                     htmlFor="name"
@@ -146,7 +160,7 @@ export const ContactSection = () => {
                       setFormData({ ...formData, name: e.target.value })
                     }
                     required
-                    className="h-12"
+                    className="h-12 rounded-xl bg-secondary/50 border-border focus:border-accent focus:ring-accent"
                   />
                 </div>
                 <div>
@@ -165,12 +179,12 @@ export const ContactSection = () => {
                       setFormData({ ...formData, email: e.target.value })
                     }
                     required
-                    className="h-12"
+                    className="h-12 rounded-xl bg-secondary/50 border-border focus:border-accent focus:ring-accent"
                   />
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4 mb-4">
+              <div className="grid sm:grid-cols-2 gap-5 mb-5">
                 <div>
                   <label
                     htmlFor="phone"
@@ -186,7 +200,7 @@ export const ContactSection = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })
                     }
-                    className="h-12"
+                    className="h-12 rounded-xl bg-secondary/50 border-border focus:border-accent focus:ring-accent"
                   />
                 </div>
                 <div>
@@ -203,12 +217,12 @@ export const ContactSection = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, company: e.target.value })
                     }
-                    className="h-12"
+                    className="h-12 rounded-xl bg-secondary/50 border-border focus:border-accent focus:ring-accent"
                   />
                 </div>
               </div>
 
-              <div className="mb-6">
+              <div className="mb-8">
                 <label
                   htmlFor="message"
                   className="block text-sm font-medium text-foreground mb-2"
@@ -224,7 +238,7 @@ export const ContactSection = () => {
                   }
                   required
                   rows={5}
-                  className="resize-none"
+                  className="resize-none rounded-xl bg-secondary/50 border-border focus:border-accent focus:ring-accent"
                 />
               </div>
 
