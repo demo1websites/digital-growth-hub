@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -68,21 +68,21 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm"
+          ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-lg"
           : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-18 lg:h-20">
           {/* Logo */}
           <button
             onClick={() => handleNavClick("/")}
-            className="flex items-center gap-2"
+            className="flex items-center gap-3 group"
           >
-            <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center">
-              <span className="text-accent-foreground font-bold text-lg">FS</span>
+            <div className="w-11 h-11 rounded-xl gradient-accent flex items-center justify-center group-hover:scale-110 transition-transform shadow-glow-sm">
+              <Sparkles className="w-5 h-5 text-white" />
             </div>
             <span
               className={`font-display font-bold text-lg hidden sm:block transition-colors ${
@@ -94,14 +94,16 @@ export const Navbar = () => {
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <button
                 key={link.name}
                 onClick={() => handleNavClick(link.href)}
-                className={`text-sm font-medium transition-colors hover:text-accent ${
-                  isScrolled ? "text-foreground" : "text-white/90"
-                } ${isActivePage(link.href) ? "text-accent" : ""}`}
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+                  isScrolled 
+                    ? "text-muted-foreground hover:text-foreground hover:bg-secondary/80" 
+                    : "text-white/70 hover:text-white hover:bg-white/10"
+                } ${isActivePage(link.href) ? (isScrolled ? "text-accent bg-accent/10" : "text-white bg-white/10") : ""}`}
               >
                 {link.name}
               </button>
@@ -114,6 +116,7 @@ export const Navbar = () => {
               variant="hero"
               size="lg"
               onClick={() => handleNavClick("/#contact")}
+              className="shadow-glow-sm"
             >
               Book Consultation
             </Button>
@@ -122,8 +125,8 @@ export const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${
-              isScrolled ? "text-foreground hover:bg-muted" : "text-white hover:bg-white/10"
+            className={`lg:hidden p-2.5 rounded-xl transition-colors ${
+              isScrolled ? "text-foreground hover:bg-secondary" : "text-white hover:bg-white/10"
             }`}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -132,14 +135,14 @@ export const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg animate-fade-in">
-            <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border shadow-xl animate-fade-in">
+            <div className="container mx-auto px-4 py-6 flex flex-col gap-2">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => handleNavClick(link.href)}
-                  className={`text-foreground text-base font-medium py-3 px-4 rounded-lg hover:bg-muted transition-colors text-left ${
-                    isActivePage(link.href) ? "text-accent bg-muted" : ""
+                  className={`text-foreground text-base font-medium py-3 px-4 rounded-xl hover:bg-secondary transition-colors text-left ${
+                    isActivePage(link.href) ? "text-accent bg-accent/10" : ""
                   }`}
                 >
                   {link.name}
@@ -148,7 +151,7 @@ export const Navbar = () => {
               <Button
                 variant="hero"
                 size="lg"
-                className="mt-2"
+                className="mt-4"
                 onClick={() => handleNavClick("/#contact")}
               >
                 Book Consultation
