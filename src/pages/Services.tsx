@@ -165,49 +165,50 @@ const Services = () => {
           
           <div className="container mx-auto px-4 lg:px-8 relative">
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {services.map((service, index) => (
+              {services.map((service) => (
                 <div
                   key={service.title}
-                  className="group p-7 rounded-2xl bg-card border border-border shadow-card hover-lift overflow-hidden relative"
+                  className="group rounded-2xl bg-card border border-border shadow-card hover-lift overflow-hidden"
                 >
-                  {/* Gradient Background on Hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-
-                  {/* Icon */}
-                  <div className={`relative w-14 h-14 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                    <service.icon className="w-7 h-7 text-white" />
+                  {/* Colored Header Banner */}
+                  <div className={`relative bg-gradient-to-r ${service.gradient} px-6 py-8 flex items-center justify-between`}>
+                    <h3 className="font-display text-lg font-bold text-white">
+                      {service.title}
+                    </h3>
+                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 ml-3">
+                      <service.icon className="w-6 h-6 text-white" />
+                    </div>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="relative font-display text-xl font-bold text-foreground mb-3">
-                    {service.title}
-                  </h3>
+                  {/* Card Body */}
+                  <div className="p-5">
+                    {/* Description */}
+                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed line-clamp-2">
+                      {service.description}
+                    </p>
 
-                  {/* Description */}
-                  <p className="relative text-muted-foreground text-sm mb-5 leading-relaxed">
-                    {service.description}
-                  </p>
+                    {/* Feature Tags */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {service.features.map((feature) => (
+                        <span
+                          key={feature}
+                          className="px-3 py-1 text-xs font-medium rounded-full border border-border bg-secondary text-secondary-foreground"
+                        >
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
 
-                  {/* Features */}
-                  <div className="relative flex flex-wrap gap-2 mb-5">
-                    {service.features.map((feature) => (
-                      <span
-                        key={feature}
-                        className="px-3 py-1.5 text-xs font-medium rounded-lg bg-secondary text-secondary-foreground"
-                      >
-                        {feature}
-                      </span>
-                    ))}
+                    {/* CTA Badge */}
+                    <button
+                      onClick={scrollToContact}
+                      className={`w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r ${service.gradient} text-white text-sm font-semibold group-hover:gap-3 transition-all`}
+                    >
+                      <Sparkles className="w-4 h-4" />
+                      Get Started
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
                   </div>
-
-                  {/* CTA */}
-                  <button
-                    onClick={scrollToContact}
-                    className={`relative inline-flex items-center gap-2 text-sm font-semibold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent group-hover:gap-3 transition-all`}
-                  >
-                    Get Started
-                    <ArrowRight className={`w-4 h-4 bg-gradient-to-r ${service.gradient} text-[hsl(262_83%_58%)]`} />
-                  </button>
                 </div>
               ))}
             </div>
