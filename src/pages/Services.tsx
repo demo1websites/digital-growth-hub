@@ -12,9 +12,11 @@ import {
   Mic,
   Smartphone,
   Sparkles,
+  Play,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { getServiceVideoUrl } from "@/lib/supabase";
 
 const services = [
   {
@@ -24,6 +26,7 @@ const services = [
       "Modern, fast, and responsive websites that build trust and drive conversions.",
     features: ["Custom Design", "Mobile-First", "SEO Optimized"],
     gradient: "from-[hsl(262_83%_58%)] to-[hsl(280_80%_60%)]",
+    videoFile: "website-design.mp4",
   },
   {
     icon: LayoutDashboard,
@@ -32,6 +35,7 @@ const services = [
       "Custom dashboards and applications built for your workflow with real-time data.",
     features: ["Custom Logic", "Real-time Data", "User-Friendly"],
     gradient: "from-[hsl(330_85%_60%)] to-[hsl(350_80%_55%)]",
+    videoFile: "web-applications.mp4",
   },
   {
     icon: Smartphone,
@@ -40,6 +44,7 @@ const services = [
       "Full-stack web and mobile applications tailored to your business requirements.",
     features: ["Cross-Platform", "Scalable", "API Integration"],
     gradient: "from-[hsl(174_72%_45%)] to-[hsl(190_70%_50%)]",
+    videoFile: "app-development.mp4",
   },
   {
     icon: Bot,
@@ -48,6 +53,7 @@ const services = [
       "Intelligent conversational AI agents that handle customer queries 24/7.",
     features: ["Natural Language", "24/7 Support", "Multi-Platform"],
     gradient: "from-[hsl(45_90%_55%)] to-[hsl(35_85%_50%)]",
+    videoFile: "ai-chatbots.mp4",
   },
   {
     icon: Mic,
@@ -56,6 +62,7 @@ const services = [
       "Voice-powered AI assistants for hands-free customer interactions and support.",
     features: ["Speech Recognition", "Natural Voice", "Real-time"],
     gradient: "from-[hsl(200_80%_55%)] to-[hsl(220_75%_50%)]",
+    videoFile: "ai-voice.mp4",
   },
   {
     icon: Search,
@@ -64,6 +71,7 @@ const services = [
       "Improve search rankings and get discovered by more potential customers.",
     features: ["Keyword Strategy", "On-Page SEO", "Performance Audit"],
     gradient: "from-[hsl(280_70%_55%)] to-[hsl(300_75%_50%)]",
+    videoFile: "seo.mp4",
   },
   {
     icon: MapPin,
@@ -72,6 +80,7 @@ const services = [
       "Dominate local search results and attract customers from your area.",
     features: ["Profile Setup", "Review Management", "Local Rankings"],
     gradient: "from-[hsl(150_70%_45%)] to-[hsl(170_65%_50%)]",
+    videoFile: "google-maps.mp4",
   },
   {
     icon: Zap,
@@ -80,6 +89,7 @@ const services = [
       "Automate workflows and free up time to focus on what matters most.",
     features: ["Workflow Automation", "Integrations", "Custom Bots"],
     gradient: "from-[hsl(20_90%_55%)] to-[hsl(40_85%_50%)]",
+    videoFile: "automation.mp4",
   },
   {
     icon: Wrench,
@@ -88,6 +98,7 @@ const services = [
       "Keep your digital presence running smoothly with ongoing support and updates.",
     features: ["24/7 Monitoring", "Regular Updates", "Priority Support"],
     gradient: "from-[hsl(250_70%_55%)] to-[hsl(270_75%_50%)]",
+    videoFile: "maintenance.mp4",
   },
 ];
 
@@ -170,18 +181,32 @@ const Services = () => {
                   key={service.title}
                   className="group rounded-2xl bg-card border border-border shadow-card hover-lift overflow-hidden"
                 >
-                  {/* Colored Header Banner */}
-                  <div className={`relative bg-gradient-to-r ${service.gradient} px-6 py-8 flex items-center justify-between`}>
-                    <h3 className="font-display text-lg font-bold text-white">
-                      {service.title}
-                    </h3>
-                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 ml-3">
-                      <service.icon className="w-6 h-6 text-white" />
+                  {/* Video Header */}
+                  <div className={`relative bg-gradient-to-r ${service.gradient} aspect-video`}>
+                    <video
+                      className="w-full h-full object-cover"
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      onMouseEnter={(e) => e.currentTarget.play()}
+                      onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
+                      src={getServiceVideoUrl(service.videoFile)}
+                    />
+                    {/* Play icon overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-60 group-hover:opacity-0 transition-opacity">
+                      <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                        <Play className="w-5 h-5 text-white ml-0.5" />
+                      </div>
                     </div>
                   </div>
 
                   {/* Card Body */}
                   <div className="p-5">
+                    {/* Title */}
+                    <h3 className="font-display text-lg font-bold text-foreground mb-2">
+                      {service.title}
+                    </h3>
                     {/* Description */}
                     <p className="text-muted-foreground text-sm mb-4 leading-relaxed line-clamp-2">
                       {service.description}
