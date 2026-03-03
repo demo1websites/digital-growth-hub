@@ -133,6 +133,31 @@ const Services = () => {
           </div>
         </section>
 
+        {/* Video Section */}
+        <section className="py-16 lg:py-24 gradient-subtle relative overflow-hidden">
+          <div className="container mx-auto px-4 lg:px-8 relative">
+            <div className="max-w-5xl mx-auto">
+              <div className="rounded-2xl overflow-hidden border border-border shadow-card bg-card">
+                <div className="aspect-video w-full">
+                  <video
+                    className="w-full h-full object-cover"
+                    controls
+                    preload="metadata"
+                    playsInline
+                    poster=""
+                  >
+                    {/* Add your video source here, e.g.: */}
+                    {/* <source src="YOUR_VIDEO_URL" type="video/mp4" /> */}
+                    <p className="text-muted-foreground text-center p-8">
+                      Your browser does not support the video tag.
+                    </p>
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Services Grid */}
         <section className="py-24 lg:py-32 gradient-subtle relative overflow-hidden">
           {/* Background decoration */}
