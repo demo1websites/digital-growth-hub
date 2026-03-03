@@ -169,99 +169,53 @@ const Portfolio = () => {
           <div className="absolute inset-0 gradient-mesh opacity-30" />
           
           <div className="container mx-auto px-4 lg:px-8 relative">
-            <div className="space-y-12 lg:space-y-16">
-              {projects.map((project, index) => (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projects.map((project) => (
                 <div
                   key={project.title}
-                  className="rounded-3xl bg-card border border-border shadow-card overflow-hidden hover-lift"
+                  className="rounded-2xl bg-card border border-border shadow-card overflow-hidden hover-lift group"
                 >
-                  <div className="grid lg:grid-cols-2">
-                    {/* Image Placeholder */}
-                    <div
-                      className={`h-64 lg:h-auto min-h-[300px] bg-gradient-to-br ${project.gradient} relative ${
-                        index % 2 === 1 ? "lg:order-2" : ""
-                      }`}
-                    >
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-center p-8">
-                          <span className="text-white/90 font-display font-bold text-3xl lg:text-4xl">
-                            {project.category}
-                          </span>
-                        </div>
-                      </div>
-                      {/* Decorative Elements */}
-                      <div className="absolute top-6 right-6 w-20 h-20 rounded-2xl glass-dark border border-white/10" />
-                      <div className="absolute bottom-6 left-6 w-14 h-14 rounded-xl glass-dark border border-white/10" />
-                    </div>
-
-                    {/* Content */}
-                    <div className={`p-8 lg:p-12 ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                      <span className={`inline-block px-4 py-1.5 text-sm font-medium rounded-lg bg-gradient-to-r ${project.gradient} text-white mb-5`}>
+                  {/* Gradient Header */}
+                  <div className={`h-36 bg-gradient-to-br ${project.gradient} relative`}>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-white/90 font-display font-bold text-xl">
                         {project.category}
                       </span>
-                      <h2 className="font-display text-2xl lg:text-3xl font-bold text-foreground mb-5">
-                        {project.title}
-                      </h2>
+                    </div>
+                    <div className="absolute top-3 right-3 w-10 h-10 rounded-lg glass-dark border border-white/10" />
+                  </div>
 
-                      {/* Problem & Solution */}
-                      <div className="space-y-5 mb-6">
-                        <div>
-                          <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-[hsl(330_85%_60%)]" />
-                            The Challenge
-                          </h4>
-                          <p className="text-muted-foreground text-sm leading-relaxed">{project.problem}</p>
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-[hsl(174_72%_45%)]" />
-                            Our Solution
-                          </h4>
-                          <p className="text-muted-foreground text-sm leading-relaxed">{project.solution}</p>
-                        </div>
-                      </div>
+                  {/* Content */}
+                  <div className="p-5">
+                    <span className={`inline-block px-3 py-1 text-xs font-medium rounded-md bg-gradient-to-r ${project.gradient} text-white mb-3`}>
+                      {project.category}
+                    </span>
+                    <h3 className="font-display text-lg font-bold text-foreground mb-3">
+                      {project.title}
+                    </h3>
 
-                      {/* Features */}
-                      <div className="mb-6">
-                        <h4 className="font-semibold text-foreground mb-3">
-                          Key Features
-                        </h4>
-                        <div className="grid grid-cols-2 gap-2">
-                          {project.features.map((feature) => (
-                            <div key={feature} className="flex items-center gap-2">
-                              <CheckCircle className="w-4 h-4 text-accent flex-shrink-0" />
-                              <span className="text-sm text-foreground/80">
-                                {feature}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
+                    <p className="text-muted-foreground text-xs leading-relaxed mb-3 line-clamp-2">
+                      {project.problem}
+                    </p>
 
-                      {/* Technologies */}
-                      <div className="mb-6">
-                        <h4 className="font-semibold text-foreground mb-3">
-                          Technologies Used
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                          {project.technologies.map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-3 py-1.5 text-xs font-medium rounded-lg bg-secondary text-secondary-foreground"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Outcome */}
-                      <div className={`p-5 rounded-xl bg-gradient-to-r ${project.gradient} bg-opacity-10 relative overflow-hidden`}>
-                        <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} opacity-10`} />
-                        <span className="relative text-foreground font-semibold">
-                          ✨ Result: {project.outcome}
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-1.5 mb-3">
+                      {project.technologies.slice(0, 4).map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-0.5 text-[10px] font-medium rounded-md bg-secondary text-secondary-foreground"
+                        >
+                          {tech}
                         </span>
-                      </div>
+                      ))}
+                    </div>
+
+                    {/* Outcome */}
+                    <div className={`p-3 rounded-lg bg-gradient-to-r ${project.gradient} bg-opacity-10 relative overflow-hidden`}>
+                      <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} opacity-10`} />
+                      <span className="relative text-foreground font-semibold text-xs">
+                        ✨ {project.outcome}
+                      </span>
                     </div>
                   </div>
                 </div>
