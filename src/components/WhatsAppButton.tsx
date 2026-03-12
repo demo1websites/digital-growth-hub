@@ -8,7 +8,7 @@ export const WhatsAppButton = () => {
       href={`https://wa.me/${phoneNumber}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-[hsl(142_70%_45%)] hover:bg-[hsl(142_70%_40%)] shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300 animate-[whatsapp-float_8s_ease-in-out_infinite] group"
+      className="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-[hsl(142_70%_45%)] hover:bg-[hsl(142_70%_40%)] shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300 animate-float group"
       aria-label="Chat on WhatsApp"
     >
       <svg
