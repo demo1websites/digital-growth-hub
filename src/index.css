@@ -333,7 +333,15 @@
   }
 }
 
-@keyframes glow {
+@keyframes whatsapp-bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
   from {
     opacity: 0.5;
     transform: scale(1);
