@@ -1,14 +1,14 @@
 import { MessageCircle } from "lucide-react";
 
 export const WhatsAppButton = () => {
-  const phoneNumber = "1234567890"; // Replace with your WhatsApp number
+  const phoneNumber = "+919510001788"; // Replace with your WhatsApp number
 
   return (
     <a
       href={`https://wa.me/${phoneNumber}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-[hsl(142_70%_45%)] hover:bg-[hsl(142_70%_40%)] shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300 animate-[whatsapp-bob_2s_ease-in-out_infinite] group"
+      className="className="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-[hsl(142_70%_45%)] hover:bg-[hsl(142_70%_40%)] shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300 animate-[whatsapp-bob_4s_ease-in-out_infinite] group""
       aria-label="Chat on WhatsApp"
     >
       <svg
