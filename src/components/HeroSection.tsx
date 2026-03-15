@@ -87,7 +87,7 @@ export const HeroSection = () => {
           </div>
 
           {/* Headline */}
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] mb-8 animate-fade-up opacity-0 animation-delay-100">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-6 animate-fade-up opacity-0 animation-delay-100">
             Full-Stack Digital
             <span className="block mt-2 gradient-text animate-gradient bg-[length:200%_200%]">
               Solutions
