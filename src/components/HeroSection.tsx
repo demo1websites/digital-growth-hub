@@ -49,7 +49,7 @@ export const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center gradient-hero overflow-hidden noise"
+      className="relative min-h-[85vh] flex items-center justify-center gradient-hero overflow-hidden noise pt-20"
     >
       {/* Animated Background Orbs */}
       <div className="absolute inset-0 overflow-hidden">
@@ -75,7 +75,7 @@ export const HeroSection = () => {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-dark border border-white/10 mb-8 animate-fade-up opacity-0">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark border border-white/10 mb-5 animate-fade-up opacity-0">
             <div className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[hsl(174_72%_45%)] opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[hsl(174_72%_45%)]"></span>
@@ -87,7 +87,7 @@ export const HeroSection = () => {
           </div>
 
           {/* Headline */}
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] mb-8 animate-fade-up opacity-0 animation-delay-100">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-6 animate-fade-up opacity-0 animation-delay-100">
             Full-Stack Digital
             <span className="block mt-2 gradient-text animate-gradient bg-[length:200%_200%]">
               Solutions
@@ -102,7 +102,7 @@ export const HeroSection = () => {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg sm:text-xl lg:text-2xl text-white/60 max-w-3xl mx-auto mb-12 leading-relaxed animate-fade-up opacity-0 animation-delay-200">
+          <p className="text-base sm:text-lg lg:text-xl text-white/60 max-w-3xl mx-auto mb-8 leading-relaxed animate-fade-up opacity-0 animation-delay-200">
             We help businesses improve their online presence, generate quality leads,
             and automate operations with custom web solutions built for real results.
           </p>
@@ -133,22 +133,22 @@ export const HeroSection = () => {
           </div>
 
           {/* Trust Indicators */}
-          <div className="mt-20 pt-10 border-t border-white/10 animate-fade-up opacity-0 animation-delay-400">
-            <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+          <div className="mt-12 pt-8 border-t border-white/10 animate-fade-up opacity-0 animation-delay-400">
+            <div className="grid grid-cols-3 gap-6 max-w-xl mx-auto">
               <div className="text-center group">
-                <div className="text-4xl lg:text-5xl font-bold text-white mb-2 font-display">
+                <div className="text-3xl lg:text-4xl font-bold text-white mb-1 font-display">
                   50<span className="text-[hsl(262_83%_58%)]">+</span>
                 </div>
                 <div className="text-white/50 text-sm">Projects Delivered</div>
               </div>
               <div className="text-center group">
-                <div className="text-4xl lg:text-5xl font-bold text-white mb-2 font-display">
+                <div className="text-3xl lg:text-4xl font-bold text-white mb-1 font-display">
                   100<span className="text-[hsl(330_85%_60%)]">%</span>
                 </div>
                 <div className="text-white/50 text-sm">Client Satisfaction</div>
               </div>
               <div className="text-center group">
-                <div className="text-4xl lg:text-5xl font-bold text-white mb-2 font-display">
+                <div className="text-3xl lg:text-4xl font-bold text-white mb-1 font-display">
                   24<span className="text-[hsl(174_72%_45%)]">/7</span>
                 </div>
                 <div className="text-white/50 text-sm">Support Available</div>
