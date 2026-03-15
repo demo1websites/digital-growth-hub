@@ -1,7 +1,44 @@
 import { ArrowRight, Sparkles, Zap, Shield, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
+
+const typewriterPhrases = [
+  "Business Growth",
+  "Lead Generation",
+  "Automation",
+  "Digital Success",
+];
 
 export const HeroSection = () => {
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentPhrase = typewriterPhrases[currentPhraseIndex];
+    const typingSpeed = isDeleting ? 40 : 80;
+
+    if (!isDeleting && displayText === currentPhrase) {
+      const pauseTimeout = setTimeout(() => setIsDeleting(true), 1800);
+      return () => clearTimeout(pauseTimeout);
+    }
+
+    if (isDeleting && displayText === "") {
+      setIsDeleting(false);
+      setCurrentPhraseIndex((prev) => (prev + 1) % typewriterPhrases.length);
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setDisplayText(
+        isDeleting
+          ? currentPhrase.substring(0, displayText.length - 1)
+          : currentPhrase.substring(0, displayText.length + 1)
+      );
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentPhraseIndex]);
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
