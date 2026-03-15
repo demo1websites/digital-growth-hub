@@ -49,7 +49,7 @@ export const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center gradient-hero overflow-hidden noise"
+      className="relative min-h-[85vh] flex items-center justify-center gradient-hero overflow-hidden noise pt-20"
     >
       {/* Animated Background Orbs */}
       <div className="absolute inset-0 overflow-hidden">
