@@ -142,7 +142,7 @@ export const HeroSection = () => {
                 <div className="text-white/50 text-sm">Projects Delivered</div>
               </div>
               <div className="text-center group">
-                <div className="text-4xl lg:text-5xl font-bold text-white mb-2 font-display">
+                <div className="text-3xl lg:text-4xl font-bold text-white mb-1 font-display">
                   100<span className="text-[hsl(330_85%_60%)]">%</span>
                 </div>
                 <div className="text-white/50 text-sm">Client Satisfaction</div>
