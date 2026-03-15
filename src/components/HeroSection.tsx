@@ -133,10 +133,10 @@ export const HeroSection = () => {
           </div>
 
           {/* Trust Indicators */}
-          <div className="mt-20 pt-10 border-t border-white/10 animate-fade-up opacity-0 animation-delay-400">
-            <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+          <div className="mt-12 pt-8 border-t border-white/10 animate-fade-up opacity-0 animation-delay-400">
+            <div className="grid grid-cols-3 gap-6 max-w-xl mx-auto">
               <div className="text-center group">
-                <div className="text-4xl lg:text-5xl font-bold text-white mb-2 font-display">
+                <div className="text-3xl lg:text-4xl font-bold text-white mb-1 font-display">
                   50<span className="text-[hsl(262_83%_58%)]">+</span>
                 </div>
                 <div className="text-white/50 text-sm">Projects Delivered</div>
