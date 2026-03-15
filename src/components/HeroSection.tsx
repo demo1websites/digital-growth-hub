@@ -92,7 +92,13 @@ export const HeroSection = () => {
             <span className="block mt-2 gradient-text animate-gradient bg-[length:200%_200%]">
               Solutions
             </span>
-            <span className="block mt-2 text-white/90">For Business Growth</span>
+            <span className="block mt-2 text-white/90">
+              For{" "}
+              <span className="gradient-text animate-gradient bg-[length:200%_200%] inline-block min-w-[4ch]">
+                {displayText}
+                <span className="inline-block w-[3px] h-[0.9em] bg-[hsl(262_83%_58%)] ml-1 animate-pulse align-middle" />
+              </span>
+            </span>
           </h1>
 
           {/* Subheadline */}
