@@ -1,7 +1,44 @@
 import { ArrowRight, Sparkles, Zap, Shield, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
+
+const typewriterPhrases = [
+  "Business Growth",
+  "Lead Generation",
+  "Automation",
+  "Digital Success",
+];
 
 export const HeroSection = () => {
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentPhrase = typewriterPhrases[currentPhraseIndex];
+    const typingSpeed = isDeleting ? 40 : 80;
+
+    if (!isDeleting && displayText === currentPhrase) {
+      const pauseTimeout = setTimeout(() => setIsDeleting(true), 1800);
+      return () => clearTimeout(pauseTimeout);
+    }
+
+    if (isDeleting && displayText === "") {
+      setIsDeleting(false);
+      setCurrentPhraseIndex((prev) => (prev + 1) % typewriterPhrases.length);
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setDisplayText(
+        isDeleting
+          ? currentPhrase.substring(0, displayText.length - 1)
+          : currentPhrase.substring(0, displayText.length + 1)
+      );
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentPhraseIndex]);
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -55,7 +92,13 @@ export const HeroSection = () => {
             <span className="block mt-2 gradient-text animate-gradient bg-[length:200%_200%]">
               Solutions
             </span>
-            <span className="block mt-2 text-white/90">For Business Growth</span>
+            <span className="block mt-2 text-white/90">
+              For{" "}
+              <span className="gradient-text animate-gradient bg-[length:200%_200%] inline-block min-w-[4ch]">
+                {displayText}
+                <span className="inline-block w-[3px] h-[0.9em] bg-[hsl(262_83%_58%)] ml-1 animate-pulse align-middle" />
+              </span>
+            </span>
           </h1>
 
           {/* Subheadline */}
