@@ -102,7 +102,7 @@ export const HeroSection = () => {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg sm:text-xl lg:text-2xl text-white/60 max-w-3xl mx-auto mb-12 leading-relaxed animate-fade-up opacity-0 animation-delay-200">
+          <p className="text-base sm:text-lg lg:text-xl text-white/60 max-w-3xl mx-auto mb-8 leading-relaxed animate-fade-up opacity-0 animation-delay-200">
             We help businesses improve their online presence, generate quality leads,
             and automate operations with custom web solutions built for real results.
           </p>
