@@ -26,7 +26,6 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle hash scrolling after navigation
   useEffect(() => {
     if (location.hash) {
       setTimeout(() => {
@@ -42,7 +41,6 @@ export const Navbar = () => {
     setIsOpen(false);
     
     if (href.startsWith("/#")) {
-      // Hash link on home page
       if (location.pathname === "/") {
         const element = document.querySelector(href.substring(1));
         if (element) {
@@ -81,11 +79,11 @@ export const Navbar = () => {
             onClick={() => handleNavClick("/")}
             className="flex items-center gap-3 group"
           >
-            <div className="w-11 h-11 rounded-xl gradient-accent flex items-center justify-center group-hover:scale-110 transition-transform shadow-glow-sm">
+            <div className="w-11 h-11 rounded-xl gradient-accent flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-glow-sm">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <span
-              className={`font-display font-bold text-lg hidden sm:block transition-colors ${
+              className={`font-display font-extrabold text-lg hidden sm:block transition-colors ${
                 isScrolled ? "text-foreground" : "text-white"
               }`}
             >

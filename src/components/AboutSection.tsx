@@ -5,25 +5,25 @@ const values = [
     icon: Target,
     title: "Results-Driven",
     description: "We focus on real business outcomes, not just beautiful designs.",
-    color: "from-[hsl(262_83%_58%)] to-[hsl(280_80%_60%)]",
+    color: "from-[hsl(270_100%_65%)] to-[hsl(340_100%_60%)]",
   },
   {
     icon: Users,
     title: "Customer-Focused",
     description: "Your success is our priority. We build solutions that work for you.",
-    color: "from-[hsl(330_85%_60%)] to-[hsl(350_80%_55%)]",
+    color: "from-[hsl(340_100%_60%)] to-[hsl(0_85%_55%)]",
   },
   {
     icon: Lightbulb,
     title: "Innovation",
     description: "Staying ahead with modern technologies and creative solutions.",
-    color: "from-[hsl(174_72%_45%)] to-[hsl(190_70%_50%)]",
+    color: "from-[hsl(180_100%_50%)] to-[hsl(200_90%_50%)]",
   },
   {
     icon: Award,
     title: "Transparency",
     description: "Clear communication and honest pricing at every step.",
-    color: "from-[hsl(45_90%_55%)] to-[hsl(35_85%_50%)]",
+    color: "from-[hsl(150_100%_55%)] to-[hsl(180_100%_50%)]",
   },
 ];
 
@@ -42,7 +42,7 @@ export const AboutSection = () => {
                 About Us
               </span>
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-[1.1]">
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground mb-8 leading-[1.05]">
               Building Digital Solutions That
               <span className="gradient-text block mt-2"> Drive Results</span>
             </h2>
@@ -59,12 +59,12 @@ export const AboutSection = () => {
             </p>
 
             {/* Mission Statement */}
-            <div className="relative p-8 rounded-2xl overflow-hidden group hover-lift">
-              <div className="absolute inset-0 gradient-accent opacity-10 group-hover:opacity-15 transition-opacity" />
+            <div className="relative p-8 rounded-2xl overflow-hidden group hover-lift funky-card">
+              <div className="absolute inset-0 gradient-accent opacity-5 group-hover:opacity-10 transition-opacity" />
               <div className="absolute inset-0 glass" />
               <div className="relative">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-xl gradient-accent flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl gradient-accent flex items-center justify-center shadow-glow-sm">
                     <ArrowUpRight className="w-5 h-5 text-white" />
                   </div>
                   <h3 className="font-display font-bold text-xl text-foreground">Our Mission</h3>
@@ -82,10 +82,10 @@ export const AboutSection = () => {
             {values.map((value, index) => (
               <div
                 key={value.title}
-                className="group p-6 rounded-2xl bg-card border border-border shadow-card hover-lift cursor-pointer"
+                className="group p-6 rounded-2xl bg-card border border-border shadow-card hover-lift cursor-pointer funky-card"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${value.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${value.color} flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
                   <value.icon className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="font-display font-bold text-lg text-foreground mb-2">
