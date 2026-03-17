@@ -8,6 +8,7 @@ const testimonials = [
       "Full-Stack Digital Solutions transformed our online presence completely. The new website and automation tools have saved us countless hours every week.",
     rating: 5,
     avatar: "SJ",
+    gradient: "from-[hsl(270_100%_65%)] to-[hsl(340_100%_60%)]",
   },
   {
     name: "Michael Chen",
@@ -16,6 +17,7 @@ const testimonials = [
       "Professional, responsive, and delivered exactly what we needed. Our local SEO rankings improved dramatically after working with them.",
     rating: 5,
     avatar: "MC",
+    gradient: "from-[hsl(340_100%_60%)] to-[hsl(0_85%_55%)]",
   },
   {
     name: "Emily Rodriguez",
@@ -24,6 +26,7 @@ const testimonials = [
       "The dashboard they built gives us real-time insights that were impossible before. Highly recommend their services!",
     rating: 5,
     avatar: "ER",
+    gradient: "from-[hsl(180_100%_50%)] to-[hsl(200_90%_50%)]",
   },
 ];
 
@@ -32,8 +35,8 @@ export const TestimonialsSection = () => {
     <section className="py-24 lg:py-32 gradient-hero relative overflow-hidden noise">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[hsl(262_83%_58%/0.2)] rounded-full blur-[150px] animate-glow" />
-        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[hsl(330_85%_60%/0.15)] rounded-full blur-[120px]" />
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[hsl(270_100%_65%/0.2)] rounded-full blur-[150px] animate-morph" />
+        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[hsl(180_100%_50%/0.12)] rounded-full blur-[120px] animate-morph animation-delay-300" />
       </div>
 
       {/* Grid Pattern */}
@@ -42,16 +45,16 @@ export const TestimonialsSection = () => {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark border border-white/10 mb-6">
-            <span className="text-[hsl(262_83%_58%)] font-semibold text-sm uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark border border-[hsl(270_100%_65%/0.2)] mb-6">
+            <span className="text-[hsl(270_100%_65%)] font-semibold text-sm uppercase tracking-wider">
               Testimonials
             </span>
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.1]">
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-[1.05]">
             What Our Clients
             <span className="gradient-text block mt-2"> Say</span>
           </h2>
-          <p className="text-white/60 text-lg lg:text-xl">
+          <p className="text-white/55 text-lg lg:text-xl">
             Don't just take our word for it. Here's what our clients have to say
             about working with us.
           </p>
@@ -59,18 +62,18 @@ export const TestimonialsSection = () => {
 
         {/* Testimonials Grid */}
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {testimonials.map((testimonial, index) => (
+          {testimonials.map((testimonial) => (
             <div
               key={testimonial.name}
-              className="group p-8 rounded-2xl glass-dark border border-white/10 hover:border-white/20 transition-all duration-300 hover:translate-y-[-4px]"
+              className="group p-8 rounded-2xl glass-dark border border-white/10 hover:border-[hsl(270_100%_65%/0.3)] transition-all duration-500 hover:translate-y-[-6px]"
             >
               {/* Quote Icon */}
-              <div className="w-12 h-12 rounded-xl gradient-accent flex items-center justify-center mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
+              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center mb-6 opacity-80 group-hover:opacity-100 group-hover:rotate-6 transition-all duration-300`}>
                 <Quote className="w-6 h-6 text-white" />
               </div>
 
               {/* Content */}
-              <p className="text-white/80 mb-8 leading-relaxed text-lg">
+              <p className="text-white/75 mb-8 leading-relaxed text-lg">
                 "{testimonial.content}"
               </p>
 
@@ -79,19 +82,19 @@ export const TestimonialsSection = () => {
                 {Array.from({ length: testimonial.rating }).map((_, i) => (
                   <Star
                     key={i}
-                    className="w-5 h-5 fill-[hsl(45_90%_55%)] text-[hsl(45_90%_55%)]"
+                    className="w-5 h-5 fill-[hsl(45_100%_55%)] text-[hsl(45_100%_55%)]"
                   />
                 ))}
               </div>
 
               {/* Author */}
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full gradient-accent flex items-center justify-center">
+                <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center`}>
                   <span className="text-white font-bold text-sm">{testimonial.avatar}</span>
                 </div>
                 <div>
                   <div className="font-semibold text-white">{testimonial.name}</div>
-                  <div className="text-white/50 text-sm">{testimonial.role}</div>
+                  <div className="text-white/45 text-sm">{testimonial.role}</div>
                 </div>
               </div>
             </div>

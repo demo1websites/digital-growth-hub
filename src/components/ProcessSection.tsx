@@ -13,7 +13,7 @@ const steps = [
     title: "Discovery",
     description:
       "We start by understanding your business, goals, challenges, and target audience through detailed discussions.",
-    color: "from-[hsl(262_83%_58%)] to-[hsl(280_80%_60%)]",
+    color: "from-[hsl(270_100%_65%)] to-[hsl(340_100%_60%)]",
   },
   {
     icon: Lightbulb,
@@ -21,7 +21,7 @@ const steps = [
     title: "Planning & Strategy",
     description:
       "Based on our findings, we create a comprehensive roadmap with clear milestones, timelines, and deliverables.",
-    color: "from-[hsl(330_85%_60%)] to-[hsl(350_80%_55%)]",
+    color: "from-[hsl(340_100%_60%)] to-[hsl(0_85%_55%)]",
   },
   {
     icon: Code,
@@ -29,7 +29,7 @@ const steps = [
     title: "Design & Development",
     description:
       "Our team brings the plan to life with modern design and clean, scalable code built with best practices.",
-    color: "from-[hsl(174_72%_45%)] to-[hsl(190_70%_50%)]",
+    color: "from-[hsl(180_100%_50%)] to-[hsl(200_90%_50%)]",
   },
   {
     icon: TestTube,
@@ -37,7 +37,7 @@ const steps = [
     title: "Testing & Optimization",
     description:
       "Rigorous testing across devices and browsers ensures your solution is fast, secure, and bug-free.",
-    color: "from-[hsl(45_90%_55%)] to-[hsl(35_85%_50%)]",
+    color: "from-[hsl(150_100%_55%)] to-[hsl(180_100%_50%)]",
   },
   {
     icon: Rocket,
@@ -45,7 +45,7 @@ const steps = [
     title: "Launch & Support",
     description:
       "We handle deployment and provide ongoing support to ensure your solution continues to perform.",
-    color: "from-[hsl(200_80%_55%)] to-[hsl(220_75%_50%)]",
+    color: "from-[hsl(270_100%_65%)] to-[hsl(200_90%_50%)]",
   },
 ];
 
@@ -63,7 +63,7 @@ export const ProcessSection = () => {
               Our Process
             </span>
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-[1.1]">
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground mb-6 leading-[1.05]">
             How We
             <span className="gradient-text"> Work</span>
           </h2>
@@ -73,10 +73,10 @@ export const ProcessSection = () => {
           </p>
         </div>
 
-        {/* Process Steps - Horizontal on desktop */}
+        {/* Process Steps */}
         <div className="relative">
           {/* Connection Line */}
-          <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-border to-transparent" />
+          <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
           
           <div className="grid lg:grid-cols-5 gap-8 lg:gap-4">
             {steps.map((step, index) => (
@@ -84,16 +84,13 @@ export const ProcessSection = () => {
                 key={step.number}
                 className="relative group"
               >
-                {/* Step Card */}
-                <div className="relative p-6 lg:p-5 rounded-2xl bg-card border border-border shadow-card hover-lift h-full">
-                  {/* Number Circle */}
-                  <div className={`w-16 h-16 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                <div className="relative p-6 lg:p-5 rounded-2xl bg-card border border-border shadow-card hover-lift h-full funky-card">
+                  <div className={`w-16 h-16 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg`}>
                     <step.icon className="w-8 h-8 lg:w-7 lg:h-7 text-white" />
                   </div>
 
-                  {/* Step Number */}
                   <div className="absolute top-6 right-6 lg:top-5 lg:right-5">
-                    <span className={`text-4xl lg:text-3xl font-bold font-display bg-gradient-to-br ${step.color} bg-clip-text text-transparent opacity-30`}>
+                    <span className={`text-4xl lg:text-3xl font-extrabold font-display bg-gradient-to-br ${step.color} bg-clip-text text-transparent opacity-20`}>
                       {step.number}
                     </span>
                   </div>
@@ -104,9 +101,8 @@ export const ProcessSection = () => {
                   <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
                 </div>
 
-                {/* Connector Arrow (hidden on mobile) */}
                 {index < steps.length - 1 && (
-                  <div className="hidden lg:flex absolute -right-2 top-24 z-10 w-4 h-4 rounded-full bg-card border-2 border-accent" />
+                  <div className="hidden lg:flex absolute -right-2 top-24 z-10 w-4 h-4 rounded-full bg-card border-2 border-accent shadow-glow-sm" />
                 )}
               </div>
             ))}

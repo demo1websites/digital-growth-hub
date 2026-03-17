@@ -20,7 +20,6 @@ export const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     toast({
@@ -45,7 +44,7 @@ export const ContactSection = () => {
               Get In Touch
             </span>
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-[1.1]">
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground mb-6 leading-[1.05]">
             Let's Build Something
             <span className="gradient-text block mt-2"> Amazing</span>
           </h2>
@@ -71,9 +70,9 @@ export const ContactSection = () => {
             <div className="space-y-4">
               <a
                 href="mailto:hello@fullstackdigital.com"
-                className="flex items-center gap-4 p-5 rounded-2xl bg-card border border-border shadow-card hover-lift group"
+                className="flex items-center gap-4 p-5 rounded-2xl bg-card border border-border shadow-card hover-lift group funky-card"
               >
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[hsl(262_83%_58%)] to-[hsl(280_80%_60%)] flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[hsl(270_100%_65%)] to-[hsl(340_100%_60%)] flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                   <Mail className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -82,14 +81,14 @@ export const ContactSection = () => {
                     hello@fullstackdigital.com
                   </div>
                 </div>
-                <ArrowRight className="w-5 h-5 text-muted-foreground ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ArrowRight className="w-5 h-5 text-muted-foreground ml-auto opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
               </a>
 
               <a
                 href="tel:+1234567890"
-                className="flex items-center gap-4 p-5 rounded-2xl bg-card border border-border shadow-card hover-lift group"
+                className="flex items-center gap-4 p-5 rounded-2xl bg-card border border-border shadow-card hover-lift group funky-card"
               >
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[hsl(330_85%_60%)] to-[hsl(350_80%_55%)] flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[hsl(340_100%_60%)] to-[hsl(0_85%_55%)] flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                   <Phone className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -98,11 +97,11 @@ export const ContactSection = () => {
                     +1 (234) 567-890
                   </div>
                 </div>
-                <ArrowRight className="w-5 h-5 text-muted-foreground ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ArrowRight className="w-5 h-5 text-muted-foreground ml-auto opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
               </a>
 
-              <div className="flex items-center gap-4 p-5 rounded-2xl bg-card border border-border shadow-card">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[hsl(174_72%_45%)] to-[hsl(190_70%_50%)] flex items-center justify-center">
+              <div className="flex items-center gap-4 p-5 rounded-2xl bg-card border border-border shadow-card funky-card">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[hsl(180_100%_50%)] to-[hsl(200_90%_50%)] flex items-center justify-center">
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -120,15 +119,15 @@ export const ContactSection = () => {
               <div className="flex gap-3">
                 {["LinkedIn", "Twitter", "GitHub"].map((social, index) => {
                   const colors = [
-                    "from-[hsl(262_83%_58%)] to-[hsl(280_80%_60%)]",
-                    "from-[hsl(330_85%_60%)] to-[hsl(350_80%_55%)]",
-                    "from-[hsl(174_72%_45%)] to-[hsl(190_70%_50%)]",
+                    "from-[hsl(270_100%_65%)] to-[hsl(340_100%_60%)]",
+                    "from-[hsl(340_100%_60%)] to-[hsl(0_85%_55%)]",
+                    "from-[hsl(180_100%_50%)] to-[hsl(200_90%_50%)]",
                   ];
                   return (
                     <a
                       key={social}
                       href="#"
-                      className={`px-5 py-2.5 rounded-xl bg-gradient-to-br ${colors[index]} text-white text-sm font-medium hover:scale-105 transition-transform shadow-lg`}
+                      className={`px-5 py-2.5 rounded-xl bg-gradient-to-br ${colors[index]} text-white text-sm font-medium hover:scale-105 hover:rotate-1 transition-all duration-300 shadow-lg`}
                     >
                       {social}
                     </a>
@@ -142,7 +141,7 @@ export const ContactSection = () => {
           <div className="lg:col-span-3">
             <form
               onSubmit={handleSubmit}
-              className="p-8 lg:p-10 rounded-3xl bg-card border border-border shadow-card"
+              className="p-8 lg:p-10 rounded-3xl bg-card border border-border shadow-card funky-card"
             >
               <div className="grid sm:grid-cols-2 gap-5 mb-5">
                 <div>
